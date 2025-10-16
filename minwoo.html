@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>제비 월드 🕊️</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(180deg,#3c2b7a,#2e77b2,#a7d3ff);
+    overflow: hidden;
+    font-family: 'Jua', sans-serif;
+    color: #fff;
+  }
+  h1 {
+    text-align:center;
+    margin-top:40px;
+    font-size: clamp(36px,6vw,70px);
+    text-shadow:0 0 20px rgba(255,255,255,0.6);
+  }
+  .city-labels {
+    position:absolute;
+    top:110px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    font-size:24px;
+  }
+  .city-labels span {
+    background:rgba(0,0,0,0.3);
+    padding:8px 18px;
+    border-radius:16px;
+    box-shadow:0 0 10px rgba(255,255,255,0.2);
+  }
+  .bird {
+    position:absolute;
+    font-size:40px;
+    animation: fly linear infinite;
+  }
+  @keyframes fly {
+    0% {transform: translateX(-10%) translateY(0) rotate(0deg);}
+    50% {transform: translateX(50vw) translateY(-20vh) rotate(10deg);}
+    100% {transform: translateX(110vw) translateY(0) rotate(0deg);}
+  }
+  .bird.big {font-size:80px;animation-duration:25s;filter:drop-shadow(0 0 12px #fff)}
+  .bird.small {font-size:36px;animation-duration:15s;opacity:0.8;}
+  footer{
+    position:absolute;bottom:10px;width:100%;text-align:center;font-size:14px;opacity:0.8;
+  }
+</style>
+</head>
+<body>
+  <h1>제비 월드 🕊️</h1>
+  <div class="city-labels">
+    <span>강남제비</span>
+    <span>대구제비</span>
+    <span>부산제비</span>
+    <span>대형제비</span>
+  </div>
+  <div id="birds"></div>
+  <footer>하늘 위를 나는 제비들이 도시를 가로지릅니다 ✨</footer>
+  <script>
+    const birds = document.getElementById('birds');
+    const emojis = ['🕊️','🐦','🪽'];
+    for(let i=0;i<12;i++){
+      const b = document.createElement('div');
+      b.className = 'bird ' + (Math.random()>0.7?'big':'small');
+      b.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      b.style.top = Math.random()*80+'vh';
+      b.style.left = -Math.random()*100+'px';
+      b.style.animationDuration = (10+Math.random()*15)+'s';
+      birds.appendChild(b);
+    }
+  </script>
+</body>
+</html>
